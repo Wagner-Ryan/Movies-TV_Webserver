@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/person.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/person.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <div class="TopDataWrapper">
+                            <div class="TitleWrapper">
+                                <span class="H1"><%= person %></span>
+                            </div>
+                        </div>
+                        <div class="MiddleDataWrapper">
+                            <div class="PosterWrapper">
+                                <img src="<%= imagePath %>" class="ProfileImage">
+                            </div>
+                            <div class="DataWrapper">
+                                <div class="ColumnDataWrapper">
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Birthday</span>
+                                        <% if (birthday) { %>
+                                            <span class="Subtitle"><%= birthday %></span>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Birthplace</span>
+                                        <% if (birthplace) { %>
+                                            <span class="Subtitle"><%= birthplace %></span>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="H2">Biography</span>
+                        <% if (biography) { %>
+                            <span class="Subtitle"><%= biography %></span>
+                        <% } else { %>
+                            <span class="Subtitle" style="font-style: italic;">No Biography Found</span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

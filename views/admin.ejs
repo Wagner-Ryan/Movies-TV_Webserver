@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/admin.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/admin.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <div class="SectionWrapper" id="DataSection">
+                            <span class="SectionHeader">Statistics for Database</span>
+                            <div class="DataWrapper">
+                                <div class="ColumnDataWrapper">
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Movies</span>
+                                        <span class="Subtitle"><%= data.numMovies %></span>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of TVShows</span>
+                                        <span class="Subtitle"><%= data.numTVShows %></span>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Actors</span>
+                                        <span class="Subtitle"><%= data.numActors %></span>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Directors</span>
+                                        <span class="Subtitle"><%= data.numDirectors %></span>
+                                    </div>
+                                </div>
+                                <div class="ColumnDataWrapper">
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Users</span>
+                                        <span class="Subtitle"><%= data.numUsers %></span>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Favorited Items</span>
+                                        <span class="Subtitle"><%= data.numFavoritedItems %></span>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Number of Watchlisted Items</span>
+                                        <span class="Subtitle"><%= data.numWatchlistedItems %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="SectionWrapper">
+                            <span class="SectionHeader">Add new movie:</span>
+                            <div class="InputWrapper" id="MovieInputWrapper">
+                                <input class="TextInput" id="title" placeholder="Movie Title">
+                                <input class="TextInput" id="duration" placeholder="Movie Duration (mins)">
+                                <input class="TextInput" id="genre_id" placeholder="Movie Genre ID">
+                                <input class="TextInput" id="director_id" placeholder="Movie Director ID">
+                                <input class="TextInput" id="tmdb_id" placeholder="Movie TMDB ID">
+                                <input class="TextInput" id="tmdb_rating" placeholder="Movie TMDB Rating">
+                                <input class="TextInput" id="overview" placeholder="Movie Overview">
+                                <input class="TextInput" id="release_year" placeholder="Movie Release Date">
+                            </div>
+                            <button class="InsertButton" id="InsertButtonAddMovie">Add Movie</button>
+                        </div>
+                        <div class="SectionWrapper">
+                            <span class="SectionHeader">Add new tv show:</span>
+                            <div class="InputWrapper" id="TVShowInputWrapper">
+                                <input class="TextInput" id="title" placeholder="TVShow Title">
+                                <input class="TextInput" id="first_air_date" placeholder="TVShow First Air Date">
+                                <input class="TextInput" id="last_air_date" placeholder="TVShow Last Air Date">
+                                <input class="TextInput" id="num_seasons" placeholder="TVShow Number of Seasons">
+                                <input class="TextInput" id="num_episodes" placeholder="TVShow Number of Episodes">
+                                <input class="TextInput" id="genre_id" placeholder="TVShow Genre ID">
+                                <input class="TextInput" id="director_id" placeholder="TVShow Director ID">
+                                <input class="TextInput" id="tmdb_id" placeholder="TVShow TMDB ID">
+                                <input class="TextInput" id="tmdb_rating" placeholder="TVShow TMDB Rating">
+                                <input class="TextInput" id="status" placeholder="TVShow Status">
+                                <input class="TextInput" id="overview" placeholder="TVShow Overview">
+                            </div>
+                            <button class="InsertButton" id="InsertButtonAddTVShow">Add TV Show</button>
+                        </div>
+                        <div class="SectionWrapper">
+                            <span class="SectionHeader">Add new director:</span>
+                            <div class="InputWrapper" id="DirectorInputWrapper">
+                                <input class="TextInput" id="name" placeholder="Director Name">
+                                <input class="TextInput" id="birth_date" placeholder="Director Birthday">
+                                <input class="TextInput" id="birthplace" placeholder="Director Birthplace">
+                                <input class="TextInput" id="tmdb_id" placeholder="Director TMDB ID">
+                                <input class="TextInput" id="biography" placeholder="Director Biography">
+                            </div>
+                            <button class="InsertButton" id="InsertButtonAddDirector">Add Director</button>
+                        </div>
+                        <div class="SectionWrapper">
+                            <span class="SectionHeader">Add new actor:</span>
+                            <div class="InputWrapper" id="ActorInputWrapper">
+                                <input class="TextInput" id="name" placeholder="Actor Name">
+                                <input class="TextInput" id="birth_date" placeholder="Actor Birthday">
+                                <input class="TextInput" id="birthplace" placeholder="Actor Birthplace">
+                                <input class="TextInput" id="tmdb_id" placeholder="Actor TMDB ID">
+                                <input class="TextInput" id="biography" placeholder="Actor Biography">
+                            </div>
+                            <button class="InsertButton" id="InsertButtonAddActor">Add Actor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

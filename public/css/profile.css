@@ -1,0 +1,113 @@
+:root{
+    --ContentMargin: 20vw;
+    --MenuBarHeight: 4vh;
+
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --text-hover: #AFB0B0;
+    --background-color: #ffffff;
+    --alt-background-color: #27231f;
+}
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+img{
+    box-shadow: 10px 10px 21px -5px rgba(0,0,0,0.75);
+}
+.Subtitle{
+    margin-top: 5px;
+}
+
+.ReviewDivider{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Content{
+    margin-left: var(--ContentMargin);
+    margin-right: var(--ContentMargin);
+}
+.ContentBoxContainer{
+    font-family: Aptos, Arial, sans-serif;
+    min-height: calc(100vh - var(--MenuBarHeight));
+    height: fit-content;
+    background-color: var(--background-color);
+}
+.ContentBoxWrapper{
+    padding: 5px;
+}
+.WatchlistContainer{
+    display: flex;
+    flex-direction: column;
+}
+.WatchlistScroll{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space:nowrap;
+}
+
+.WatchlistScroll::-webkit-scrollbar{
+    height: 8px;
+}
+.WatchlistScroll::-webkit-scrollbar-track{
+    background: none;
+}
+.WatchlistScroll::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background: #888;
+}
+.WatchlistScroll::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+.SectionHeader{
+    font-size: xx-large;
+}
+.EntertainmentWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: fit-content;
+    width: 185px;
+}
+.EntertainmentInfoWrapper{
+    display: flex;
+    white-space: pre-wrap;
+}
+.EntertainmentTitle{
+    font-size: 25px;
+}
+.EntertainmentPosterA{
+    cursor: pointer;
+}
+.EntertainmentPosterImg{
+    border-radius: 5px;
+    width: 185px;
+    height: 278px;
+}
+#ViewWatchlistButton{
+    margin-left: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--beaver);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+#ViewFavoritesButton{
+    margin-left: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--beaver);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}

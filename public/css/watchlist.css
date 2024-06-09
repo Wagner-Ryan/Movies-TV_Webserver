@@ -1,0 +1,133 @@
+:root{
+    --ContentMargin: 20vw;
+    --MenuBarHeight: 4vh;
+    --trash-width: 40px;
+    --trash-height: 40px;
+
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --text-hover: #AFB0B0;
+    --background-color: #ffffff;
+    --alt-background-color: #27231f;
+}
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+.Content{
+    margin-left: var(--ContentMargin);
+    margin-right: var(--ContentMargin);
+}
+.ContentBoxContainer{
+    font-family: Aptos, Arial, sans-serif;
+    min-height: calc(100vh - var(--MenuBarHeight));
+    height: fit-content;
+    background-color: var(--background-color);
+}
+.ContentBoxWrapper{
+    padding: 5px;
+}
+.ProfileButton{
+    color: var(--chocolate-cosmos);
+}
+.NavContainer{
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: auto;
+    justify-content: center;
+}
+.PrevButton{
+    background-color: var(--beaver);
+    margin-right: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.NextButton{
+    background-color: var(--beaver);
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.WatchlistContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.SectionHeader{
+    font-size: xx-large;
+}
+.EntertainmentWrapper{
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: fit-content;
+    width: 185px;
+}
+.EntertainmentInfoWrapper{
+    display: flex;
+    white-space: pre-wrap;
+}
+.EntertainmentTitle{
+    font-size: 25px;
+}
+.EntertainmentPosterA{
+    cursor: pointer;
+}
+.EntertainmentPosterImg{
+    box-shadow: 10px 10px 21px -5px rgba(0,0,0,0.75);
+    border-radius: 5px;
+    width: 185px;
+    height: 278px;
+}
+#ViewWatchlistButton{
+    margin-left: auto;
+}
+.Trash{
+    background-color: #272727c5;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--trash-width);
+    height: var(--trash-height);
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.Trash:hover{
+    outline: 2px solid #c7c7c7e0;
+}
+.TrashButton{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+}
+.TrashImageMovie{
+    width: var(--trash-width);
+    height: var(--trash-height);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.TrashImageTVShow{
+    width: var(--trash-width);
+    height: var(--trash-height);
+    border: none;
+    padding: 0;
+    margin: 0;
+}

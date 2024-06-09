@@ -1,0 +1,38 @@
+:root{
+    --ContentMargin: 20vw;
+    --MenuBarHeight: 4vh;
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --text-hover: #a9927d;
+    --background-color: #ffffff;
+    --alt-background-color: #27231f;
+}
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+.Content{
+    margin-left: var(--ContentMargin);
+    margin-right: var(--ContentMargin);
+}
+.ContentBoxContainer{
+    font-family: Aptos, Arial, sans-serif;
+    min-height: calc(100vh - var(--MenuBarHeight));
+    height: fit-content;
+    background-color: var(--background-color);
+}
+.ContentBoxWrapper{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+.PageTitle{
+    margin-top: 30vh;
+    font-size: max(30px, 4vh);
+}

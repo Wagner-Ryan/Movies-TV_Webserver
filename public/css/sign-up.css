@@ -1,0 +1,85 @@
+:root{
+    --ContentMargin: 20vw;
+    --MenuBarHeight: 4vh;
+
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --text-hover: #AFB0B0;
+    --background-color: #ffffff;
+    --alt-background-color: #27231f;
+}
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+.Content{
+    margin-left: var(--ContentMargin);
+    margin-right: var(--ContentMargin);
+}
+.ContentBoxContainer{
+    font-family: Aptos, Arial, sans-serif;
+    min-height: calc(100vh - var(--MenuBarHeight));
+    height: fit-content;
+    background-color: var(--background-color);
+}
+.ContentBoxWrapper{
+    padding: 5px;
+}
+.CreateAccountContainer{
+    position: relative;
+    transform: translate(-50%);
+    left: 50%;
+    margin: 10px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+.LoginTitle{
+    margin-top: 5vh;
+    color:var(--text-dark);
+    font-size: xx-large;
+    text-align: center;
+}
+.LoginInputSpecifier{
+    color:var(--text-dark);
+    font-size: x-large;
+    text-align: center;
+}
+.LoginInput{
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    font-size: large;
+}
+.EmailInputSpecifier{
+    color:var(--text-dark);
+    font-size: x-large;
+    text-align: center;
+}
+.LoginButtons{
+    margin-top: 2vh;
+}
+.CreateAccountButton{
+    display: inline-block;
+    font-size: large;
+    background-color:var(--beaver);
+    border-style: none;
+    border-radius: 5px;
+    margin-bottom: 5vh;
+    cursor: pointer;
+}
+.MatchCase{
+    color:#A3Be8C;
+}
+.NotMatchCase{
+    color: #BF616A;
+}
+.NeedAccountRedirect{
+    color: var(--walnut-brown);
+}

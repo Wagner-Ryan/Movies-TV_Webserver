@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/sign-up.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/sign-up.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <div class="CreateAccountContainer">
+                            <p class="LoginTitle">Create an account for Movie and TV DB</p>
+                            <p class="LoginInputSpecifier">Username:</p>
+                            <input class="LoginInput" id="LoginUsername">
+                            <p class="NotMatchCase" id="LoginUsernameCase1">❌ Length 1 - 20</p>
+                            <p class="NotMatchCase" id="LoginUsernameCase2">❌ Only includes a-z, A-Z, 0-9 or _</p>
+                            <p class="EmailInputSpecifier" id="EmailSpecifier">Email:</p>
+                            <input class="LoginInput" id="LoginEmail">
+                            <p class="LoginInputSpecifier">Password:</p>
+                            <input class="LoginInput" id="LoginPassword" type="password">
+                            <p class="NotMatchCase" id="LoginPasswordCase">❌ Length 12 - 40</p>
+                            <p class="LoginInputSpecifier">Confirm Password:</p>
+                            <input class="LoginInput" id="ConfirmLoginPassword" type="password">
+                            <p class="NotMatchCase" id="ConfirmLoginPasswordCase">❌ Passwords do not match!</p>
+                            <a class="NeedAccountRedirect" href="../login">Already have an account? Sign in here</a>
+                            <div class="LoginButtons">
+                              <button class="CreateAccountButton" id="CreateAccountButton">Create an Account</button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

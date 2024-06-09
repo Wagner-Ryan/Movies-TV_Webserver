@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/movie.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/movie.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <div class="TopDataWrapper">
+                            <div class="TitleWrapper">
+                                <span class="H1"><%= data.title %></span>
+                            </div>
+                            <div class="ButtonsWrapper">
+                                <div class="ButtonWrapper">
+                                    <span class="H3">Favorite</span>
+                                    <% if (isLoggedIn && !isFavorited) { %>
+                                        <button class="WatchlistButton" id="AddToFavoritesButton" title="Add Movie to Favorites"><img class="FavoritesImage" src="/icons/star.svg" id="FavoritesImage"></button>
+                                    <% } else if (isLoggedIn && isFavorited) { %>
+                                        <button class="WatchlistButton" id="RemoveFromFavoritesButton" title="Add Movie to Favorites"><img class="FavoritesImage" src="/icons/star-filled.svg" id="FavoritesImage"></button>
+                                    <% } else { %>
+                                        <a title="Log in to add Movie to Favorites" href="/login"><img class="FavoritesImage" src="/icons/star-unavailable.svg"></a>
+                                    <% } %>
+                                </div>
+                                <div class="ButtonWrapper">
+                                    <span class="H3">Watchlist</span>
+                                    <% if (isLoggedIn && !isWatchlisted) { %>
+                                        <button class="WatchlistButton" id="AddToWatchlistButton" title="Add Movie to Watchlist"><img class="WatchlistImage" src="/icons/plus-circle.svg" id="WatchlistImage"></button>
+                                    <% } else if (isLoggedIn && isWatchlisted) { %>
+                                        <button class="WatchlistButton" id="RemoveFromWatchlistButton" title="Add Movie to Watchlist"><img class="WatchlistImage" src="/icons/minus-circle.svg" id="WatchlistImage"></button>
+                                    <% } else { %>
+                                        <a title="Log in to add Movie to Watchlist" href="/login"><img class="FavoritesImage" src="/icons/plus-circle-unavailable.svg"></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MiddleDataWrapper">
+                            <div class="PosterWrapper">
+                                <img src="<%= data.poster_path %>" class="ProfileImage">
+                            </div>
+                            <div class="DataWrapper">
+                                <div class="ColumnDataWrapper">
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Director</span>
+                                        <% if (data.director_tmdb_id) { %>
+                                            <a class="DataLink" href="/people/get/<%= data.director_tmdb_id %>"><%= data.director_name %></a>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Genre</span>
+                                        <% if (data.genre_tmdb_id) { %>
+                                            <a class="DataLink" href="/genres/get/<%= data.genre_tmdb_id %>"><%= data.genre_name %></a>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Release Date</span>
+                                        <% if (data.release_year) { %>
+                                            <span class="Subtitle"><%= data.release_year %></span>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="ColumnDataWrapper">
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Rating</span>
+                                        <% if (data.tmdb_rating) { %>
+                                            <span class="Subtitle"><%= data.tmdb_rating %></span>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                    <div class="SubDataWrapper">
+                                        <span class="H2Data">Runtime</span>
+                                        <% if (data.duration) { %>
+                                            <span class="Subtitle"><%= data.duration %> minutes</span>
+                                        <% } else { %>
+                                            <span class="Subtitle" style="font-style: italic;">No Data</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% if (subscriptions.length > 0) { %>
+                            <span class="H2">Your Streaming Subscriptions</span>
+                            <div class="BottomDataWrapper">
+                                <% for (let service of services) { %>
+                                    <% for (let subscription of subscriptions) { %>
+                                        <% if (service.service_id == subscription.service_id) { %>
+                                            <div class="ProviderWrapper">
+                                                <a href="<%= service.service_link %>" title="Check for this item on <%= service.service_name %>"><img class="ProviderImage" src="<%= service.logo_path %>"></a>
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        <% } %>
+                        <span class="H2">Overview</span>
+                        <% if (data.overview) { %>
+                            <span class="Subtitle"><%= data.overview %></span>
+                        <% } else { %>
+                            <span class="Subtitle" style="font-style: italic;">No Overview Found</span>
+                        <% } %>
+                        <form action="/movie/review" method="POST" enctype="application/x-www-form-urlencoded">
+                            <label for="reviewText">Your Review:</label><br>
+                            <textarea class="reviewText" name="reviewText" rows="5" cols="50" maxlength="255"></textarea><br>
+                            <label for="rating">Rating (1 out of 10):</label><br>
+                            <input class="rating_input" type="number" id="rating" name="rating" min="0" max="10" step="1"><br>
+                            <input class="SubmitButton" type="submit" value="Submit Review">
+                            <input type="hidden" name="userID" value="<%= user_id %>">
+                            <input type="hidden" name="tmdbId" value="<%= tmdb_id %>">
+                        </form>
+                        <span class="H2">Reviews</span>
+                        <% if (reviews.length > 0) { %>
+                            <% for(let i = 0; i < reviews.length; i++) { %>
+                                <span class="ReviewSubtitle"><%=reviews[i].username%> - <%= reviews[i].rating %>/10 - <%= reviews[i].review_text %></span>
+                            <% } %>
+                        <% } else { %>
+                            <span class="ReviewSubtitle" style="font-style: italic;">No Reviews Yet</span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

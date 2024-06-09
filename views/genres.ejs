@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/genres.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/genres.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <span class="H1" id="PageTitle">Search by Genre</span>
+                        <div class="GenresWrapper">
+                            <div class="GenreWrapper" id="Movies">
+                                <span class="H2">Movies</span>
+                                <ol>
+                                    <% for (let i = 0; i < rows.length; i++) { %>
+                                        <% let row = rows[i]; %>
+                                        <% if (row.genre_type == 1) { %>
+                                            <li><a href="/genres/get/<%= row.tmdb_id %>"><span class="H3"><%= row.genre_name %></span></a></li>
+                                            <% } %>
+                                    <% } %>
+                                </ol>
+                            </div>
+                            <div class="GenreWrapper" id="TV">
+                                <span class="H2">TV Shows</span>
+                                <ol>
+                                    <% for (let i = 0; i < rows.length; i++) { %>
+                                        <% let row = rows[i]; %>
+                                        <% if (row.genre_type == 0) { %>
+                                            <li><a href="/genres/get/<%= row.tmdb_id %>"><span class="H3"><%= row.genre_name %></span></a></li>
+                                            <% } %>
+                                    <% } %>
+                                </ol>
+                            </div>
+                            <div class="GenreWrapper" id="All">
+                                <span class="H2">Movies & TV</span>
+                                <ol>
+                                    <% for (let i = 0; i < rows.length; i++) { %>
+                                        <% let row = rows[i]; %>
+                                        <% if (row.genre_type == 2) { %>
+                                            <li><a href="/genres/get/<%= row.tmdb_id %>"><span class="H3"><%= row.genre_name %></span></a></li>
+                                            <% } %>
+                                    <% } %>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

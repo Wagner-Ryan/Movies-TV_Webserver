@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/genre-section.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/genres.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <% let genre_type = genre[0].genre_type; %>
+                        <% let genre_name = genre[0].genre_name; %>
+                        <span class="H1" id="PageTitle">
+                            <% if(genre_type == 0) { %>
+                                <%= genre_name %> TV Shows
+                            <% } else if(genre_type == 1) { %>
+                                <%= genre_name %> Movies
+                            <% } else if(genre_type == 2) { %>
+                                <%= genre_name %> Movies and TV Shows
+                            <% } %>
+                        </span>
+                        <div class="NavContainer">
+                            <% if (pageId > 1) { %>
+                                <button class="PrevButton" id="PrevButton" onclick="goToPage(<%= parseInt(pageId) - 1 %>, <%= parseInt(genre_id) %>)">< Previous Page</button>
+                            <% } %>
+                            <% if (rows.length >= 15) { %>
+                                <button class="NextButton" id="NextButton" onclick="goToPage(<%= parseInt(pageId) + 1 %>, <%= parseInt(genre_id) %>)">Next Page ></button>
+                            <% } %>
+                        </div>
+                        <div class="GenreContainer">
+                            <ol>
+                            <% for (let i = 0; i < rows.length; i++) {%>
+                                <% let row = rows[i] %>
+                                    <% if(genre_type == 0) { %>
+                                        <li>
+                                            <a class="GenreWrapper" href="/tv/get/<%= row.tmdb_id %>">
+                                                <span class="H2"><%= row.title %></span>
+                                            </a>
+                                        </li>
+                                    <% } else if(genre_type == 1) { %>
+                                        <li>
+                                            <a class="GenreWrapper" href="/movies/get/<%= row.tmdb_id %>">
+                                                <span class="H2"><%= row.title %></span>
+                                            </a>
+                                        </li>
+                                    <% } else if (genre_type == 2) { %>
+                                        <% if(row.is_movie) { %>
+                                            <li>
+                                                <a class="GenreWrapper" href="/movies/get/<%= row.tmdb_id %>">
+                                                    <span class="H2"><%= row.title %></span>
+                                                </a>
+                                            </li>
+                                        <% } else { %>
+                                            <li>
+                                                <a class="GenreWrapper" href="/tv/get/<%= row.tmdb_id %>">
+                                                    <span class="H2"><%= row.title %></span>
+                                                </a>
+                                            </li>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function goToPage(page, genre_id) {
+        window.location.href = '/genre-section/' + genre_id + '/' + page; // Redirect to the corresponding page
+    }
+</script>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

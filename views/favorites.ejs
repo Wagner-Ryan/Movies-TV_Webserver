@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/watchlist.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/favorites.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <% if (hiddenToRequester) { %>
+                            <h1><a class="ProfileButton" href="/profile/<%= profileOf %>"><%= profileOf %></a>'s Favorites is private</h1>
+                        <% } else {%>
+                            <h1><a class="ProfileButton" href="/profile/<%= profileOf %>"><%= profileOf %></a>'s Favorites</h1>
+                            <div class="NavContainer">
+                                <% if (pageId > 1) { %>
+                                    <button class="PrevButton" id="PrevButton" onclick="goToPage(<%= parseInt(pageId) - 1 %>)">< Previous Page</button>
+                                <% } %>
+                                <% if (favorites.length >= 40){ %>
+                                    <button class="NextButton" id="NextButton" onclick="goToPage(<%= parseInt(pageId) + 1 %>)">Next Page ></button>
+                                <% } %>
+                            </div>
+                            <div class="WatchlistContainer" id="WatchlistContainer">
+                                <% for (let i = 0; i < favorites.length; i++) { %>
+                                    <% let row = favorites[i] %>
+                                    <div class="EntertainmentWrapper">
+                                        <% if (row.movie_id) { %>
+                                            <a class="EntertainmentPosterA" href="/movies/get/<%= row.movie_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.movie_poster_path %>" class="EntertainmentPosterImg"></a>
+                                            <% if (isOwner) { %>
+                                                <div class="Trash">
+                                                    <button class="TrashButton" id="TrashButton<%= row.movie_id %>"><img class="TrashImageMovie" src="/icons/trash.svg" id="<%= row.movie_id %>"></button>
+                                                </div>
+                                            <% } %>
+                                            <div class="EntertainmentInfoWrapper">
+                                                <span class="EntertainmentTitle"><%= row.movie_title %></span>
+                                            </div>
+                                        <% } else { %>
+                                            <a class="EntertainmentPosterA" href="/tv/get/<%= row.tvshow_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.tvshow_poster_path %>" class="EntertainmentPosterImg"></a>
+                                            <% if (isOwner) { %>
+                                                <div class="Trash">
+                                                    <button class="TrashButton" id="TrashButton<%= row.tvshow_id %>"><img class="TrashImageTVShow" src="/icons/trash.svg" id="<%= row.tvshow_id %>"></button>
+                                                </div>
+                                            <% } %>
+                                            <div class="EntertainmentInfoWrapper">
+                                                <span class="EntertainmentTitle"><%= row.tvshow_title %></span>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function goToPage(page) {
+        window.location.href = '/profile/<%= profileOf %>/favorites/page/' + page; // Redirect to the corresponding page
+    }
+</script>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

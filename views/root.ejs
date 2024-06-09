@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/root.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/root.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <p class="SectionHeader">Top Rated Movies</p>
+                        <div class="TopRatedContainer">
+                            <% const movieData = data[0] %>
+                            <% for (let i = 0; i < movieData.length; i++) { %>
+                                <% let row = data[0][i] %>
+                                <div class="EntertainmentWrapper">
+                                    <a class="EntertainmentPosterA" href="/movies/get/<%= row.tmdb_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.poster_path %>" class="EntertainmentPosterImg"></a>
+                                    <div class="EntertainmentInfoWrapper">
+                                        <span class="EntertainmentTitle"><%= row.title %></span>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                        <p class="SectionHeader">Top Rated TV</p>
+                        <div class="TopRatedContainer">
+                            <% const tvData = data[1] %>
+                            <% for (let i = 0; i < tvData.length; i++) { %>
+                                <% let row = data[1][i] %>
+                                <div class="EntertainmentWrapper">
+                                    <a class="EntertainmentPosterA" href="/tv/get/<%= row.tmdb_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.poster_path %>" class="EntertainmentPosterImg"></a>
+                                    <div class="EntertainmentInfoWrapper">
+                                        <span class="EntertainmentTitle"><%= row.title %></span>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

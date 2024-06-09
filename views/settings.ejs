@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/settings.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/settings.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <h1 class="PageTitle">Settings</h1>
+                        <div class="SettingsWrapper">
+                            <div class="SectionSettingsWrapper">
+                                <span class="H2">Profile Settings</span>
+                                <div class="GroupedSettingsWrapper">
+                                    <div class="IndividualSettingsWrapper" id="PrivateProfile">
+                                        <span class="H3" id="SpanPrivateProfile">Make profile private</span>
+                                        <label class="Switch">
+                                        <% if (isProfilePrivate) { %>
+                                                <input type="Checkbox" id="PrivateProfileCheckbox" checked>
+                                        <% } else { %>
+                                                <input type="Checkbox" id="PrivateProfileCheckbox">
+                                        <% } %>
+                                        <span class="Slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="SectionSettingsWrapper">
+                                <span class="H2">Your Streaming Service Subscriptions</span>
+                                <span class="Subtitle">Select the streaming services you subscribe to</span>
+                                <div class="GroupedSettingsWrapper">
+                                    <% for (let service of services) { %>
+                                        <% let serviceFound = false %>
+                                        <% for (let userService of userServices) { %>
+                                            <% if (userService.service_name == service.service_name) { %>
+                                                <% serviceFound = true %>
+                                            <% } %>
+                                        <% } %>
+                                        <div class="IndividualSettingsWrapper" id="PrivateProfile">
+                                            <span class="H3" id="ServiceSpan<%= service.service_name %>"><%= service.service_name %></span>
+                                            <label class="Switch">
+                                                <input type="Checkbox" id="Service<%= service.service_name %>Checkbox" <%= (serviceFound) ? 'checked' : '' %>>
+                                                <span class="Slider"></span>
+                                            </label>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="SectionSettingsWrapper">
+                                <button id="SaveButton">Save Preferences</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

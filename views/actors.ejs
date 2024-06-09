@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/people.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/actors.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <span class="H1" id="PageTitle">Actors Page <%= pageId %></span>
+                        <div class="NavContainer">
+                            <% if (pageId > 1) { %>
+                                <button class="PrevButton" id="PrevButton" onclick="goToPage(<%= parseInt(pageId) - 1 %>)">< Previous Page</button>
+                            <% } %>
+                            <% if (rows.length >= 15) { %>
+                                <button class="NextButton" id="NextButton" onclick="goToPage(<%= parseInt(pageId) + 1 %>)">Next Page ></button>
+                            <% } %>
+                        </div>
+                        <div class="PeopleContainer">
+                            <ol>
+                            <% for (let i = 0; i < rows.length; i++) {%>
+                                <% let row = rows[i] %>
+                                    <li>
+                                        <a class="PersonWrapper" href="/people/get/<%= row.tmdb_id %>">
+                                            <span class="H2"><%= row.name %></span>
+                                        </a>
+                                    </li>
+                                <% } %>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function goToPage(page) {
+        window.location.href = '/people/actors/page/' + page; // Redirect to the corresponding page
+    }
+</script>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

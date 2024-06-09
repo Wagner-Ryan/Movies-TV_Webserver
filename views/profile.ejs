@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="text/javascript" src="/scripts/profile.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <% if (hiddenToRequester) { %>
+                            <h1><%= profileOf %>'s Profile Page is private</h1>
+                        <% } else {%>
+                            <h1><%= profileOf %>'s Profile Page</h1>
+                            <h2><%= profileOf %>'s Watchlist</h2>
+                            <% if (watchlist.length > 0) { %>
+                                <div class="WatchlistContainer">
+                                    <div class="WatchlistScroll">
+                                        <% for (let i = 0; i < watchlist.length; i++) { %>
+                                            <% let row = watchlist[i] %>
+                                            <div class="EntertainmentWrapper">
+                                                <% if (row.movie_id) { %>
+                                                    <a class="EntertainmentPosterA" href="/movies/get/<%= row.movie_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.movie_poster_path %>" class="EntertainmentPosterImg"></a>
+                                                    <div class="EntertainmentInfoWrapper">
+                                                        <span class="EntertainmentTitle"><%= row.movie_title %></span>
+                                                    </div>
+                                                <% } else { %>
+                                                    <a class="EntertainmentPosterA" href="/tv/get/<%= row.tvshow_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.tvshow_poster_path %>" class="EntertainmentPosterImg"></a>
+                                                    <div class="EntertainmentInfoWrapper">
+                                                        <span class="EntertainmentTitle"><%= row.tvshow_title %></span>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <button id="ViewWatchlistButton">View All</button>
+                                </div>
+                            <% } else { %>
+                                <span class="Subtitle">No content in watchlist</span>
+                            <% } %>
+                            <h2><%= profileOf %>'s Favorites</h2>
+                            <% if (favorites.length > 0) { %>
+                                <div class="WatchlistContainer">
+                                    <div class="WatchlistScroll">
+                                        <% for (let i = 0; i < favorites.length; i++) { %>
+                                            <% let row = favorites[i] %>
+                                            <div class="EntertainmentWrapper">
+                                                <% if (row.movie_id) { %>
+                                                    <a class="EntertainmentPosterA" href="/movies/get/<%= row.movie_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.movie_poster_path %>" class="EntertainmentPosterImg"></a>
+                                                    <div class="EntertainmentInfoWrapper">
+                                                        <span class="EntertainmentTitle"><%= row.movie_title %></span>
+                                                    </div>
+                                                <% } else { %>
+                                                    <a class="EntertainmentPosterA" href="/tv/get/<%= row.tvshow_id %>"><img src="https://image.tmdb.org/t/p/w185<%= row.tvshow_poster_path %>" class="EntertainmentPosterImg"></a>
+                                                    <div class="EntertainmentInfoWrapper">
+                                                        <span class="EntertainmentTitle"><%= row.tvshow_title %></span>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                    <button id="ViewFavoritesButton">View All</button>
+                                </div>
+                            <% } else { %>
+                                <span class="Subtitle">No content in favorites</span>
+                            <% } %>
+                            <h2><%= profileOf %>'s Reviews</h2>
+                            <% if (reviews.length > 0) { %>
+                                <div class="WatchlistContainer">
+                                    <% for (let i = 0; i < reviews.length; i++) { %>
+                                        <% let row = reviews[i] %>
+                                        <% if(row.tvshow_title == null) {%>
+                                            <span class="ReviewDivider"><%= row.movie_title %> - (<%= row.rating %>/10) - <%= row.review_text %></span>
+                                        <% } else { %>
+                                            <span class="ReviewDivider"><%= row.tvshow_title %> - (<%= row.rating %>/10) - <%= row.review_text %></span>
+                                        <% } %>
+                                    <% } %>
+                                </div>
+                            <% } else { %>
+                                <span class="Subtitle">No reviews written yet</span>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

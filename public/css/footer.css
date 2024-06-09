@@ -1,0 +1,21 @@
+.Footer{
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --white-smoke: #f2f4f3;
+    --text-hover: #a9927d;
+    --background-color: #27231f;
+    display: flex;
+    flex-grow: 1;
+    height: auto;
+    background-color: var(--background-color);
+}
+.FooterText{
+    color: #FCFAFC;
+}
+.FooterContentWrapper{
+    height: fit-content;
+}
+#TMDBLogo{
+    height: 10px;
+}

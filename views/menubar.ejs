@@ -1,0 +1,31 @@
+<div class="MenuBar" id="MenuBar">
+    <div class="MenuBarContentContainer" id="MenuBarContentContainer">
+        <div class="MenuBarTitleWrapper">
+            <a class="Title" id="Title" href="/">Movie and TV DB</a>
+        </div>
+        <div class="MenuBarLinkButtonsWrapper">
+            <a class="MenuBarLinkButtons" href="/movies">Movies</a>
+            <a class="MenuBarLinkButtons" href="/tv">TV Shows</a>
+            <a class="MenuBarLinkButtons" href="/genres">Genres</a>
+            <a class="MenuBarLinkButtons" href="/people">People</a>
+        </div>
+        <div class="MenuBarLoginWrapper">
+            <% if (isLoggedIn === false) { %>
+                <a class="MenuBarLinkButtons" href="/login">Login</a>
+                <a class="MenuBarLinkButtons" href="/sign-up">Sign Up</a>
+            <% } else { %>
+                <div class="MenuBarLoggedInText">Logged in as:</div>
+                <div class="MenuBarAccountWrapper" id="AccountButtonInactive"><a class="MenuBarAccountButton"><%= username %></a></div>
+                <ul class="hidden" id="AccountMenu">
+                    <div class="AccountMenuButtonWrapper" id="ProfileButtonWrapper"><a class="AccountMenuButtons" id="ProfileButton" href="/profile/<%= username %>">Profile</a></div>
+                    <div class="AccountMenuButtonWrapper" id="ProfileButtonWrapper"><a class="AccountMenuButtons" id="SettingsButton" href="/settings">Settings</a></div>
+                    <% if (isAdmin) { %>
+                        <div class="AccountMenuButtonWrapper" id="ProfileButtonWrapper"><a class="AccountMenuButtons" id="AdminButton" href="/admin-panel">Administrate</a></div>
+                    <% } %>
+                    <div class="AccountMenuButtonWrapper" id="LogoutButtonWrapper"><li class="AccountMenuButtons" id="LogoutButton">Logout</li></div>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</div>
+<script type="module" src="/scripts/modules/profileDropdown.js"></script>

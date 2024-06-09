@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="/css/login.css">
+<link rel="stylesheet" type="text/css" href="/css/menubar.css">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<script type="module" src="/scripts/login.js" defer></script>
+<head>  
+    <title>Movie and TV Show Database Project</title>
+</head>
+<header>
+    <%- include("menubar.ejs") %>
+</header>
+<body id="body">
+    <div class="MainPageWrapper">
+        <div class="MainPageContent">
+            <div class="Content" id="HomePageContent">
+                <div class="ContentBoxContainer" id="HomePageContentBoxContainer">
+                    <div class="ContentBoxWrapper">
+                        <div class="LoginContainer">
+                            <p class="LoginTitle">Login to Movie and TV DB</p>
+                            <p class="LoginInputSpecifier">Username:</p>
+                            <input class="LoginInput" id="LoginUsername">
+                            <p class="LoginInputSpecifier">Password:</p>
+                            <input class="LoginInput" id="LoginPassword" type="password">
+                            <br>
+                            <br>
+                            <a class="NeedAccountRedirect" href="../sign-up">Need an Account? Create one here</a>
+                            <div class="LoginButtons">
+                              <button class="LoginButton" id="LoginButton">Login</button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="Footer">
+    <%- include("footer.ejs") %>
+</footer>

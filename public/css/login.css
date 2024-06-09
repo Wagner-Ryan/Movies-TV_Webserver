@@ -1,0 +1,74 @@
+:root{
+    --ContentMargin: 20vw;
+    --MenuBarHeight: 4vh;
+
+    --beaver: #a9927d;
+    --chocolate-cosmos: #49111c;
+    --walnut-brown: #5e503f;
+    --text-light: #ffffff;
+    --text-dark: #000000;
+    --text-hover: #AFB0B0;
+    --background-color: #ffffff;
+    --alt-background-color: #27231f;
+}
+body{
+    margin: 0;
+    background-color: var(--background-color);
+}
+a{
+    text-decoration: none;
+}
+.Content{
+    margin-left: var(--ContentMargin);
+    margin-right: var(--ContentMargin);
+}
+.ContentBoxContainer{
+    font-family: Aptos, Arial, sans-serif;
+    min-height: calc(100vh - var(--MenuBarHeight));
+    height: fit-content;
+    background-color: var(--background-color);
+}
+.ContentBoxWrapper{
+    padding: 5px;
+}
+.LoginContainer{
+    position: relative;
+    margin: 10px;
+    transform: translate(-50%);
+    left: 50%;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+.LoginTitle{
+    color:var(--text-dark);
+    font-size: xx-large;
+    text-align: center;
+    margin-top: 5vh;
+}
+.LoginInputSpecifier{
+    color:var(--text-dark);
+    font-size: x-large;
+    text-align: center;
+}
+.LoginInput{
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    font-size: large;
+}
+.LoginButtons{
+    margin-top: 2vh;
+}
+.LoginButton{
+    display: inline-block;
+    font-size: large;
+    background-color:var(--beaver);
+    border-style: none;
+    border-radius: 5px;
+    margin-bottom: 5vh;
+    cursor: pointer;
+}
+.NeedAccountRedirect{
+    color: var(--walnut-brown);
+}
