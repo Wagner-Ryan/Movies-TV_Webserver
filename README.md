@@ -8,3 +8,5 @@ How to run project:
 4. Run "node server.js"
 Note: Closing the terminal will terminate the node process!
 5. In a browser, navigate to localhost:7777
+
+*** Need .env file in order to run
